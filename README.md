@@ -27,8 +27,23 @@ import amcl
 import numpy as np
 
 # Create motion and laser parameters
-motion_params = amcl.MotionParameters(0.1, 0.1, 0.1, 0.1, 0.1)
-laser_params = amcl.LaserParameters()
+motion_params = amcl.MotionParameters(
+    alpha1=0.1,
+    alpha2=0.1,
+    alpha3=0.1,
+    alpha4=0.1,
+    alpha5=0.1
+)
+laser_params = amcl.LaserParameters(
+    z_hit=0.5,
+    z_short=0.05,
+    z_max=0.05,
+    z_rand=0.5,
+    sigma_hit=0.2,
+    lambda_short=0.1,
+    chi_outlier=0.05,
+    max_beams=60
+)
 
 # Create AMCL localizer
 localizer = amcl.AMCL(
@@ -52,6 +67,9 @@ localizer.set_map(grid)
 initial_pose = amcl.Vector3D(0.0, 0.0, 0.0)
 initial_cov = amcl.Matrix3D()
 localizer.set_initial_pose(initial_pose, initial_cov)
+
+# Set laser pose relative to robot base
+localizer.set_laser_pose(amcl.Vector3D(0.0, 0.0, 0.0))
 
 # Update with laser scan
 ranges = [[i * 0.1, i * 0.017] for i in range(181)]  # [range, bearing] pairs
