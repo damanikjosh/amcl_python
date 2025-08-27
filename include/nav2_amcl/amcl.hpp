@@ -98,6 +98,7 @@ public:
   Vector3D getPoseMean() const;
   Matrix3D getPoseCovariance() const;
   void setInitialPose(const Vector3D& pose, const Matrix3D& cov);
+  void setLaserPose(const Vector3D& laser_pose);
   
   // Getters
   bool isInitialized() const;
