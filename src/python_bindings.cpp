@@ -110,7 +110,10 @@ NB_MODULE(_amcl_impl, m) {
 
     // LaserParameters structure
     nb::class_<LaserParameters>(m, "LaserParameters", "Laser model parameters")
-        .def(nb::init<>(), "Create default laser parameters")
+        .def(nb::init<double, double, double, double, double, double, double, int>(),
+             "z_hit"_a, "z_short"_a, "z_max"_a, "z_rand"_a,
+             "sigma_hit"_a, "lambda_short"_a, "chi_outlier"_a, "max_beams"_a,
+             "Create laser parameters")
         .def_rw("z_hit", &LaserParameters::z_hit, "Weight for correct range readings")
         .def_rw("z_short", &LaserParameters::z_short, "Weight for short range readings")
         .def_rw("z_max", &LaserParameters::z_max, "Weight for max range readings")
@@ -158,6 +161,8 @@ NB_MODULE(_amcl_impl, m) {
              "Get the pose covariance matrix")
         .def("set_initial_pose", &AMCL::setInitialPose, "pose"_a, "cov"_a,
              "Set initial pose estimate with covariance")
+        .def("set_laser_pose", &AMCL::setLaserPose, "laser_pose"_a,
+             "Set laser sensor pose offset relative to robot base frame")
         .def("is_initialized", &AMCL::isInitialized,
              "Check if particle filter is initialized")
         .def_prop_ro("pose", &AMCL::getPoseMean,

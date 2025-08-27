@@ -273,6 +273,19 @@ void AMCL::setInitialPose(const Vector3D& pose, const Matrix3D& cov) {
     impl_->pf_init = false;
 }
 
+void AMCL::setLaserPose(const Vector3D& laser_pose) {
+    if (!impl_->laser) {
+        throw std::runtime_error("Laser sensor not initialized");
+    }
+    
+    pf_vector_t pose;
+    pose.v[0] = laser_pose.v[0];
+    pose.v[1] = laser_pose.v[1];
+    pose.v[2] = laser_pose.v[2];
+    
+    impl_->laser->SetLaserPose(pose);
+}
+
 bool AMCL::isInitialized() const {
     return impl_ && impl_->pf_init;
 }
