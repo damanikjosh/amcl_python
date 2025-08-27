@@ -1,14 +1,24 @@
 [project]
 name = "amcl"
 version = "0.1.0"
-description = "A brief description of what this project does"
+description = "AMCL Python Bindings"
 readme = "README.md"
 requires-python = ">=3.8,<3.14"
 authors = [
     { name = "Joshua J. Damanik", email = "joshuajdmk@gmail.com" },
 ]
 classifiers = [
-    "License :: GNU General Public License v3 (GPLv3)",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: C++",
+    "Topic :: Scientific/Engineering",
+    "Operating System :: OS Independent",
 ]
 # Optional: runtime dependency specification
 # dependencies = [ "cryptography >=41.0" ]
