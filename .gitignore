@@ -349,3 +349,6 @@ id_ed25519
 !*.cpp
 !*.c
 !*.h
+
+# Cibuildwheel
+wheelhouse/
