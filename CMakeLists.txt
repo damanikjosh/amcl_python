@@ -87,6 +87,13 @@ if (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
 endif()
 
+if (Python_VERSION VERSION_GREATER_EQUAL "3.12")
+  message(STATUS "Building with stable ABI (Python ${Python_VERSION} >= 3.12)")
+  set(ABI_FLAG STABLE_ABI)
+else()
+  message(STATUS "Building without stable ABI (Python ${Python_VERSION} < 3.12)")
+  set(ABI_FLAG "")
+endif()
 
 execute_process(
   COMMAND "${Python_EXECUTABLE}" -m nanobind --cmake_dir
@@ -95,12 +102,21 @@ find_package(nanobind CONFIG REQUIRED)
 
 if (nanobind_FOUND)
   message(STATUS "Found nanobind: ${nanobind_VERSION}")
+  message(STATUS "Python version: ${Python_VERSION}")
   
+  message(STATUS "Building with stable ABI (Python ${Python_VERSION} >= 3.12)")
   nanobind_add_module(
     _amcl_impl
-    STABLE_ABI
+    ${ABI_FLAG}
     NB_STATIC
     src/python_bindings.cpp
+  )
+  
+  # Ensure C++17 for the Python bindings
+  set_target_properties(_amcl_impl PROPERTIES
+    CXX_STANDARD 17
+    CXX_STANDARD_REQUIRED ON
+    CXX_EXTENSIONS OFF
   )
   
   target_link_libraries(_amcl_impl PRIVATE amcl)

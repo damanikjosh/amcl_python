@@ -20,8 +20,6 @@ classifiers = [
     "Topic :: Scientific/Engineering",
     "Operating System :: OS Independent",
 ]
-# Optional: runtime dependency specification
-# dependencies = [ "cryptography >=41.0" ]
 
 [project.urls]
 Homepage = "https://github.com/damanikjosh/amcl_python"
@@ -38,8 +36,10 @@ minimum-version = "build-system.requires"
 # Setuptools-style build caching in a local directory
 build-dir = "build/{wheel_tag}"
 
-# Build stable ABI wheels for CPython 3.8+
-wheel.py-api = "cp38"
+# Conditionally build stable ABI wheels for CPython 3.12+
+# For Python 3.8-3.11: regular wheels, for 3.12+: stable ABI
+wheel.py-api = "cp312"
+wheel.expand-macos-universal-tags = true
 
 [tool.cibuildwheel]
 # Necessary to see build output from the actual compilation
