@@ -11,7 +11,12 @@ Vibe-coded with love ❤️
 
 ## 📦 Installation
 
+You can install the package using pip:
+```bash
+pip install amcl
+```
 
+Or install from source:
 ```bash
 git clone https://github.com/damanikjosh/amcl_python.git
 cd amcl_python
