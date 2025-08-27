@@ -1,9 +1,9 @@
 [project]
 name = "amcl"
-version = "0.0.1"
+version = "0.1.0"
 description = "A brief description of what this project does"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.8,<3.14"
 authors = [
     { name = "Joshua J. Damanik", email = "joshuajdmk@gmail.com" },
 ]
@@ -45,4 +45,4 @@ archs = ["auto64"]          # Only target 64 bit architectures
 
 # Needed for full C++17 support on macOS
 [tool.cibuildwheel.macos.environment]
-MACOSX_DEPLOYMENT_TARGET = "10.14"
+MACOSX_DEPLOYMENT_TARGET = "14.0"

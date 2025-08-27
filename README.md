@@ -3,6 +3,7 @@
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org)
 [![C++17](https://img.shields.io/badge/c%2B%2B-17-blue.svg)](https://en.wikipedia.org/wiki/C%2B%2B17)
 [![License: GPLv3](https://img.shields.io/badge/License-GPLv3-yellow.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[![Build](https://github.com/damanikjosh/amcl_python/actions/workflows/build.yml/badge.svg)](https://github.com/damanikjosh/amcl_python/actions/workflows/build.yml)
 
 Python bindings for Adaptive Monte Carlo Localization (AMCL) adapted from the [Nav2 AMCL](https://github.com/ros-navigation/navigation2/tree/main/nav2_amcl).
 
