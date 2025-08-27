@@ -94,7 +94,6 @@ def test_amcl_functionality(grid, scan):
         alpha_slow=0.001,
         alpha_fast=0.01,
         motion_params=motion_params,
-        laser_likelihood_max_dist=2.0,
         laser_params=laser_params,
         robot_model_type="differential"
     )
@@ -166,7 +165,6 @@ def test_performance():
         alpha_slow=0.001,
         alpha_fast=0.01,
         motion_params=motion_params,
-        laser_likelihood_max_dist=5.0,
         laser_params=laser_params,
         robot_model_type="differential"
     )

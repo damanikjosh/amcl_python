@@ -14,7 +14,7 @@ int main() {
     nav2_amcl::LaserParameters laser_params(0.95, 0.1, 0.05, 0.05, 0.2, 0.5, 0.05, 10);
     
     // Create AMCL instance using modern C++ interface
-    nav2_amcl::AMCL amcl(500, 2000, 0.0, 0.0, motion_params, 2.0, laser_params, "differential");
+    nav2_amcl::AMCL amcl(500, 2000, 0.0, 0.0, motion_params, laser_params, "differential");
     
     std::cout << "AMCL instance created successfully." << std::endl;
     

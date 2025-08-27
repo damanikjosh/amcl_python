@@ -133,9 +133,9 @@ NB_MODULE(_amcl_impl, m) {
 
     // Main AMCL class
     nb::class_<AMCL>(m, "AMCL", "Adaptive Monte Carlo Localization")
-        .def(nb::init<int, int, double, double, const MotionParameters&, double, const LaserParameters&, const std::string&>(),
+        .def(nb::init<int, int, double, double, const MotionParameters&, const LaserParameters&, const std::string&>(),
              "min_particles"_a, "max_particles"_a, "alpha_slow"_a, "alpha_fast"_a,
-             "motion_params"_a, "laser_likelihood_max_dist"_a, "laser_params"_a, "robot_model_type"_a,
+             "motion_params"_a, "laser_params"_a, "robot_model_type"_a,
              "Create AMCL instance\n\n"
              "Parameters:\n"
              "  min_particles: Minimum number of particles\n"
@@ -143,7 +143,6 @@ NB_MODULE(_amcl_impl, m) {
              "  alpha_slow: Slow decay rate for adaptive resampling\n"
              "  alpha_fast: Fast decay rate for adaptive resampling\n"
              "  motion_params: Motion model parameters\n"
-             "  laser_likelihood_max_dist: Maximum distance for laser likelihood\n"
              "  laser_params: Laser model parameters\n"
              "  robot_model_type: Robot model type ('differential' or 'omni')")
         .def("set_map", &AMCL::setMap, "grid"_a,

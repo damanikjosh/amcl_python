@@ -6,8 +6,6 @@
 #include "nav2_amcl/motion_model/differential_motion_model.hpp"
 #include "nav2_amcl/motion_model/omni_motion_model.hpp"
 
-#include <iostream>
-#include <cstring>
 #include <memory>
 #include <cstdlib>
 #include <cmath>
@@ -116,7 +114,6 @@ public:
 AMCL::AMCL(int min_particles, int max_particles,
            double alpha_slow, double alpha_fast,
            const MotionParameters& motion_params,
-           double laser_likelihood_max_dist,
            const LaserParameters& laser_params,
            const std::string& robot_model_type)
     : impl_(std::make_unique<Impl>()) {
@@ -220,10 +217,6 @@ void AMCL::update(const LaserScan& scan, const Vector3D& odom_pose) {
     impl_->ranges_buffer = scan.ranges;
     ldata.ranges = reinterpret_cast<double(*)[2]>(impl_->ranges_buffer.data());
 
-    // CRITICAL: Set ranges to NULL before ldata goes out of scope to prevent double free
-    // The LaserData destructor calls delete[] ranges, but our ranges come from std::vector
-    auto ranges_backup = ldata.ranges;
-    
     // Sensor update
     impl_->laser->sensorUpdate(impl_->pf, &ldata);
     

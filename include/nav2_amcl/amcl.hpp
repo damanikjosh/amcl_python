@@ -78,7 +78,6 @@ public:
   AMCL(int min_particles, int max_particles,
        double alpha_slow, double alpha_fast,
        const MotionParameters& motion_params,
-       double laser_likelihood_max_dist,
        const LaserParameters& laser_params,
        const std::string& robot_model_type);
   

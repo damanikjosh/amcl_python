@@ -153,7 +153,6 @@ def demo_numpy_integration():
         alpha_slow=0.001,
         alpha_fast=0.1,
         motion_params=motion_params,
-        laser_likelihood_max_dist=2.0,
         laser_params=laser_params,
         robot_model_type="differential"
     )
