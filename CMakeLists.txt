@@ -78,7 +78,7 @@ else()
   set(DEV_MODULE Development.Module)
 endif()
 
-find_package(Python 3.8
+find_package(Python "3.8...<3.14"
   REQUIRED COMPONENTS Interpreter Development.Module
   OPTIONAL_COMPONENTS Development.SABIModule)
 
