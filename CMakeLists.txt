@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15...3.27)
-project(amcl_python VERSION 0.1.0 LANGUAGES CXX C)
+project(amcl_python VERSION 0.1.1 LANGUAGES CXX C)
 
 # Set C++ standard to C++17 (required for modern C++ features)
 set(CMAKE_CXX_STANDARD 17)
