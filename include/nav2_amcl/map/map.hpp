@@ -29,6 +29,7 @@
 #define NAV2_AMCL__MAP__MAP_HPP_
 
 #include <stdint.h>
+#include <math.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -123,8 +124,8 @@ void map_draw_wifi(map_t * map, struct _rtk_fig_t * fig, int index);
 #define MAP_WYGY(map, j) (map->origin_y + ((j) - map->size_y / 2) * map->scale)
 
 // Convert from world coords to map coords
-#define MAP_GXWX(map, x) (floor((x - map->origin_x) / map->scale + 0.5) + map->size_x / 2)
-#define MAP_GYWY(map, y) (floor((y - map->origin_y) / map->scale + 0.5) + map->size_y / 2)
+#define MAP_GXWX(map, x) (round((x - map->origin_x) / map->scale) + map->size_x / 2)
+#define MAP_GYWY(map, y) (round((y - map->origin_y) / map->scale) + map->size_y / 2)
 
 // Test to see if the given map coords lie within the absolute map bounds.
 #define MAP_VALID(map, i, j) ((i >= 0) && (i < map->size_x) && (j >= 0) && (j < map->size_y))
