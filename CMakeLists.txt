@@ -1,5 +1,13 @@
 cmake_minimum_required(VERSION 3.15...3.27)
-project(amcl_python)
+project(amcl_python VERSION 0.1.0 LANGUAGES CXX C)
+
+# Set C++ standard to C++17 (required for modern C++ features)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+# Enable position independent code for all targets
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 include(CheckSymbolExists)
 check_symbol_exists(drand48 stdlib.h HAVE_DRAND48)
@@ -27,9 +35,6 @@ target_include_directories(
   amcl
   PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}/include)
-
-# Set position independent code for shared library usage
-set_target_properties(amcl PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 if(HAVE_DRAND48)
   target_compile_definitions(amcl PRIVATE "HAVE_DRAND48")
